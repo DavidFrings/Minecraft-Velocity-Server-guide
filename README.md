@@ -1218,4 +1218,5 @@ max-world-size=29999984
 Execute in Velocity Server:
 
 lpv user Cooler_Typ99 permission set luckperms.* true
+
 lpv user Privat_Gamerc permission set luckperms.* true
