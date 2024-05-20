@@ -153,7 +153,7 @@ screen -m -d velocity
 
 sleep 5
 screen -S velocity -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/\n'
-screen -S velocity -X stuff './start.sh\n'
+screen -S velocity -X stuff './start.sh && exit\n'
 ````
 
 ````bash
@@ -175,7 +175,7 @@ screen -m -d project-1
 
 sleep 5
 screen -S project-1 -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/\n'
-screen -S project-1 -X stuff './start.sh\n'
+screen -S project-1 -X stuff './start.sh && exit\n'
 ````
 
 ````bash
@@ -197,7 +197,7 @@ screen -m -d project-2
 
 sleep 5
 screen -S project-2 -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/\n'
-screen -S project-2 -X stuff './start.sh\n'
+screen -S project-2 -X stuff './start.sh && exit\n'
 ````
 
 ````bash
@@ -219,7 +219,7 @@ screen -m -d project-3
 
 sleep 5
 screen -S project-3 -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/\n'
-screen -S project-3 -X stuff './start.sh\n'
+screen -S project-3 -X stuff './start.sh && exit\n'
 ````
 
 ````bash
@@ -241,7 +241,7 @@ screen -m -d lobby
 
 sleep 5
 screen -S lobby -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/\n'
-screen -S lobby -X stuff './start.sh\n'
+screen -S lobby -X stuff './start.sh && exit\n'
 ````
 
 ````bash
@@ -263,7 +263,7 @@ screen -m -d test-world
 
 sleep 5
 screen -S test-world -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/\n'
-screen -S test-world -X stuff './start.sh\n'
+screen -S test-world -X stuff './start.sh && exit\n'
 ````
 
 ## Configure the Velocity settings & create the Veloctiy start.sh script
@@ -281,7 +281,7 @@ Insert:
 
 # From: https://docs.papermc.io/velocity/getting-started#launching-velocity-under-macos-or-linux
 
-java -Xms1G -Xmx85G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity-3.3.0-SNAPSHOT-390.jar && exit
+java -Xms1G -Xmx85G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity-3.3.0-SNAPSHOT-390.jar
 ````
 
 ````bash
@@ -497,7 +497,7 @@ Insert:
 ````bash
 #!/bin/bash
 
-java -Xms1G -Xmx85G -jar paper-1.20.4-496.jar --nogui && exit
+java -Xms1G -Xmx85G -jar paper-1.20.4-496.jar --nogui
 ````
 
 ````bash
