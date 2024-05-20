@@ -1,3 +1,13 @@
+````bash
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/plugins/ && wget https://github.com/MilkBowl/Vault/releases/download/1.7.3/Vault.jar && wget https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar &&cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/plugins/ && wget https://github.com/MilkBowl/Vault/releases/download/1.7.3/Vault.jar && wget https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar &&cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/plugins/ && wget https://github.com/MilkBowl/Vault/releases/download/1.7.3/Vault.jar && wget https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar &&cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/plugins/ && wget https://github.com/MilkBowl/Vault/releases/download/1.7.3/Vault.jar && wget https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar &&cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/plugins/ && wget https://github.com/MilkBowl/Vault/releases/download/1.7.3/Vault.jar && wget https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar && cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/plugins/ && wget https://github.com/MilkBowl/Vault/releases/download/1.7.3/Vault.jar && wget https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar
+````
+
+
+
+
+
+
+
 # Minecraft [Velocity](https://papermc.io/software/velocity) Server Setup guide on Linux (Ubuntu 22.04)
 
 ## Summary
