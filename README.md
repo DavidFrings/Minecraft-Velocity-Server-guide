@@ -475,7 +475,7 @@ cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/ && echo 'Tk5c1aSP
 ### Install [ViaVersion](https://viaversion.com/) for Velocity
 
 ````bash
-mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/plugins/ && cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar
+mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/plugins/ && cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && wget https://download.luckperms.net/1541/velocity/LuckPerms-Velocity-5.4.128.jar
 ````
 
 ## Set up sub-servers
@@ -1214,3 +1214,8 @@ resource-pack-sha1=
 spawn-protection=0
 max-world-size=29999984
 ````
+
+Execute in Velocity Server:
+
+lpv user Cooler_Typ99 permission set luckperms.* true
+lpv user Privat_Gamerc permission set luckperms.* true
