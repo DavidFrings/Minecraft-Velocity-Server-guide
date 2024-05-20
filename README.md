@@ -13,7 +13,7 @@ sudo apt update && sudo apt upgrade
 ````
 
 ````bash
-mkdir ~/games/ && mkdir ~/games/minecraft/ && mkdir ~/games/minecraft/velocity/ && mkdir ~/games/minecraft/project-1/ && mkdir ~/games/minecraft/project-2/ && mkdir ~/games/minecraft/project-3/ && mkdir ~/games/minecraft/lobby/ && mkdir ~/games/minecraft/survival/ && mkdir ~/games/minecraft/test-world/
+mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/ && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/ && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/ && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/ && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/ && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/ && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/
 ````
 
 ## Create start & connect scripts
@@ -34,26 +34,24 @@ Insert:
 #
 
 if  screen -list | grep -q "velocity"; then
-    ~/games/minecraft/connect-minecraft.sh
+    /mnt/Festplatte/Server/Minecraft/Server9-Velocity/connect-minecraft.sh
 else if screen -list | grep -q "project-1"; then
-    ~/games/minecraft/connect-minecraft.sh
+    /mnt/Festplatte/Server/Minecraft/Server9-Velocity/connect-minecraft.sh
 else if screen -list | grep -q "project-2"; then
-    ~/games/minecraft/connect-minecraft.sh
+    /mnt/Festplatte/Server/Minecraft/Server9-Velocity/connect-minecraft.sh
 else if screen -list | grep -q "project-3"; then
-    ~/games/minecraft/connect-minecraft.sh
+    /mnt/Festplatte/Server/Minecraft/Server9-Velocity/connect-minecraft.sh
 else if screen -list | grep -q "lobby"; then
-    ~/games/minecraft/connect-minecraft.sh
-else if screen -list | grep -q "survival"; then
-    ~/games/minecraft/connect-minecraft.sh
+    /mnt/Festplatte/Server/Minecraft/Server9-Velocity/connect-minecraft.sh
 else if screen -list | grep -q "test-world"; then
-    ~/games/minecraft/connect-minecraft.sh
+    /mnt/Festplatte/Server/Minecraft/Server9-Velocity/connect-minecraft.sh
 else
-    ~/games/minecraft/start-minecraft.sh
-fi fi fi fi fi fi fi
+    /mnt/Festplatte/Server/Minecraft/Server9-Velocity/start-minecraft.sh
+fi fi fi fi fi fi
 ````
 
 ````bash
-nano ~/games/minecraft/connect-minecraft.sh && chmod u+x ~/games/minecraft/connect-minecraft.sh
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/connect-minecraft.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/connect-minecraft.sh
 ````
 
 Insert:
@@ -68,7 +66,7 @@ Insert:
 #
 
 screen -list
-read -p "Please select between: Velocity[0], Project 1[1], Project 2[2], Project 3[3], Survival[4], Test world[5], Lobby[6] & Kill all[9] (Use kill only in Emergency): " server
+read -p "Please select between: Velocity[0], Project 1[1], Project 2[2], Project 3[3], Test world[4], Lobby[5] & Kill all[9] (Use kill only in Emergency): " server
 
 if [ $server = "Velocity" ] || [ $server = "0" ]; then
         screen -r velocity
@@ -78,22 +76,20 @@ else if [ $server = "Project 2" ] || [ $server = "2" ]; then
         screen -r project-2
 else if [ $server = "Project 3" ] || [ $server = "3" ]; then
         screen -r project-3
-else if [ $server = "Survival" ] || [ $server = "4" ]; then
-        screen -r survival
-else if [ $server = "Test world" ] || [ $server = "5" ]; then
+else if [ $server = "Test world" ] || [ $server = "4" ]; then
         screen -r test-world
-else if [ $server = "Lobby" ] || [ $server = "6" ]; then
+else if [ $server = "Lobby" ] || [ $server = "5" ]; then
         screen -r lobby
 else if [ $server = "Kill all" ] || [ $server = "9" ]; then
         read -p "Are you sure you want to force kill all screens? [y/N]: " kill
         if [ $kill = "y" ] || [ $kill = "Y" ] || [ $kill = "1" ]; then
                 sudo pkill screen
         fi
-fi fi fi fi fi fi fi fi
+fi fi fi fi fi fi fi
 ````
 
 ````bash
-nano ~/games/minecraft/start-minecraft.sh && chmod u+x ~/games/minecraft/start-minecraft.sh
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/start-minecraft.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/start-minecraft.sh
 ````
 
 Insert:
@@ -107,34 +103,30 @@ Insert:
 # Copyright (c) 2024 David Frings
 #
 
-~/games/minecraft/velocity/screen-create.sh
-~/games/minecraft/lobby/screen-create.sh
+/mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/screen-create.sh
+/mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/screen-create.sh
 
 function sel {
-    read -p "Please select between: Project 1[1], Project 2[2], Project 3[3], Survival[4], Test world [5], All servers[8] & End[9]: " server  
+    read -p "Please select between: Project 1[1], Project 2[2], Project 3[3], Test world [4], All servers[8] & End[9]: " server  
     if [ $server = "End" ] || [ $server = "0" ]; then
                 exit 1
         else if [ $server = "Project 1" ] || [ $server = "1" ]; then
-                ~/games/minecraft/project-1/screen-create.sh
+                /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/screen-create.sh
                 sel
         else if [ $server = "Project 2" ] || [ $server = "2" ]; then
-                ~/games/minecraft/project-2/screen-create.sh
+                /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/screen-create.sh
                 sel
         else if [ $server = "Project 3" ] || [ $server = "3" ]; then
-                ~/games/minecraft/project-3/screen-create.sh
+                /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/screen-create.sh
                 sel
-        else if [ $server = "Survival" ] || [ $server = "4" ]; then
-                ~/games/minecraft/survival/screen-create.sh
-                sel
-        else if [ $server = "Test world" ] || [ $server = "5" ]; then
-                ~/games/minecraft/test-world/screen-create.sh
+        else if [ $server = "Test world" ] || [ $server = "4" ]; then
+                /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/screen-create.sh
                 sel
         else if [ $server = "All servers" ] || [ $server = "8" ]; then
-                ~/games/minecraft/project-1/screen-create.sh
-                ~/games/minecraft/project-2/screen-create.sh
-                ~/games/minecraft/project-3/screen-create.sh
-                ~/games/minecraft/survival/screen-create.sh
-                ~/games/minecraft/test-world/screen-create.sh
+                /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/screen-create.sh
+                /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/screen-create.sh
+                /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/screen-create.sh
+                /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/screen-create.sh
         fi fi fi fi fi fi fi
 }
 sel
@@ -143,7 +135,7 @@ sel
 ## Create the screen-create.sh script for all servers
 
 ````bash
-nano ~/games/minecraft/velocity/screen-create.sh && chmod u+x ~/games/minecraft/velocity/screen-create.sh
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/screen-create.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/screen-create.sh
 ````
 
 Insert:
@@ -160,12 +152,12 @@ Insert:
 screen -m -d velocity
 
 sleep 5
-screen -S velocity -X stuff 'cd ~/games/minecraft/velocity/\n'
+screen -S velocity -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/\n'
 screen -S velocity -X stuff './start.sh\n'
 ````
 
 ````bash
-nano ~/games/minecraft/project-1/screen-create.sh && chmod u+x ~/games/minecraft/project-1/screen-create.sh
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/screen-create.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/screen-create.sh
 ````
 
 Insert:
@@ -182,12 +174,12 @@ Insert:
 screen -m -d project-1
 
 sleep 5
-screen -S project-1 -X stuff 'cd ~/games/minecraft/project-1/\n'
+screen -S project-1 -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/\n'
 screen -S project-1 -X stuff './start.sh\n'
 ````
 
 ````bash
-nano ~/games/minecraft/project-2/screen-create.sh && chmod u+x ~/games/minecraft/project-2/screen-create.sh
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/screen-create.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/screen-create.sh
 ````
 
 Insert:
@@ -204,12 +196,12 @@ Insert:
 screen -m -d project-2
 
 sleep 5
-screen -S project-2 -X stuff 'cd ~/games/minecraft/project-2/\n'
+screen -S project-2 -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/\n'
 screen -S project-2 -X stuff './start.sh\n'
 ````
 
 ````bash
-nano ~/games/minecraft/project-3/screen-create.sh && chmod u+x ~/games/minecraft/project-3/screen-create.sh
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/screen-create.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/screen-create.sh
 ````
 
 Insert:
@@ -226,12 +218,12 @@ Insert:
 screen -m -d project-3
 
 sleep 5
-screen -S project-3 -X stuff 'cd ~/games/minecraft/project-3/\n'
+screen -S project-3 -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/\n'
 screen -S project-3 -X stuff './start.sh\n'
 ````
 
 ````bash
-nano ~/games/minecraft/lobby/screen-create.sh && chmod u+x ~/games/minecraft/lobby/screen-create.sh
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/screen-create.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/screen-create.sh
 ````
 
 Insert:
@@ -248,34 +240,12 @@ Insert:
 screen -m -d lobby
 
 sleep 5
-screen -S lobby -X stuff 'cd ~/games/minecraft/lobby/\n'
+screen -S lobby -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/\n'
 screen -S lobby -X stuff './start.sh\n'
 ````
 
 ````bash
-nano ~/games/minecraft/survival/screen-create.sh && chmod u+x ~/games/minecraft/survival/screen-create.sh
-````
-
-Insert:
-
-````bash
-#!/bin/bash
-
-#
-# MIT License
-#
-# Copyright (c) 2024 David Frings
-#
-
-screen -m -d survival
-
-sleep 5
-screen -S survival -X stuff 'cd ~/games/minecraft/survival/\n'
-screen -S survival -X stuff './start.sh\n'
-````
-
-````bash
-nano ~/games/minecraft/test-world/screen-create.sh && chmod u+x ~/games/minecraft/test-world/screen-create.sh
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/screen-create.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/screen-create.sh
 ````
 
 Insert:
@@ -292,14 +262,14 @@ Insert:
 screen -m -d test-world
 
 sleep 5
-screen -S test-world -X stuff 'cd ~/games/minecraft/test-world/\n'
+screen -S test-world -X stuff 'cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/\n'
 screen -S test-world -X stuff './start.sh\n'
 ````
 
 ## Configure the Velocity settings & create the Veloctiy start.sh script
 
 ````bash
-cd ~/games/minecraft/velocity/ && wget https://api.papermc.io/v2/projects/velocity/versions/3.3.0-SNAPSHOT/builds/390/downloads/velocity-3.3.0-SNAPSHOT-390.jar && nano ~/games/minecraft/velocity/start.sh && chmod u+x ~/games/minecraft/velocity/start.sh
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/ && wget https://api.papermc.io/v2/projects/velocity/versions/3.3.0-SNAPSHOT/builds/390/downloads/velocity-3.3.0-SNAPSHOT-390.jar && nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/start.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/start.sh
 ````
 
 ### Note: You can change the -Xmx7G to your preferred maximum RAM usage e.g. -Xmx15G for 15 Gb of maximum RAM usage
@@ -311,11 +281,11 @@ Insert:
 
 # From: https://docs.papermc.io/velocity/getting-started#launching-velocity-under-macos-or-linux
 
-java -Xms1G -Xmx7G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity-3.3.0-SNAPSHOT-390.jar && exit
+java -Xms1G -Xmx85G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity-3.3.0-SNAPSHOT-390.jar && exit
 ````
 
 ````bash
-nano ~/games/minecraft/velocity/velocity.toml
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/velocity.toml
 ````
 
 ### Note: You can change the "motd", "show-max-players", "forwarding-secret-file" & "forced-hosts" settings in the file as you wish
@@ -331,7 +301,7 @@ bind = "0.0.0.0:25565"
 
 # What should be the MOTD? This gets displayed when the player adds your server to
 # their server list. Only MiniMessage format is accepted.
-motd = "<#09add3>motd"
+motd = "<#09add3>PrivatGames.net - Jetzt neu!"
 
 # What should we display for the maximum number of players? (Velocity does not support a cap
 # on the number of players online.)
@@ -401,8 +371,8 @@ lobby = "127.0.0.1:30066"
 project-1 = "127.0.0.1:30067"
 project-2 = "127.0.0.1:30068"
 project-3 = "127.0.0.1:30069"
-survival = "127.0.0.1:30070"
-test-world = "127.0.0.1:30071"
+survival = "134.255.216.47:25565"
+test-world = "127.0.0.1:30070"
 
 # In what order we should try servers when a player logs in or is kicked from a server.
 try = [
@@ -411,22 +381,22 @@ try = [
 
 [forced-hosts]
 # Configure your forced hosts here.
-"lobby.domain" = [
+"lobby.privatgames.net" = [
     "lobby"
 ]
-"project-1.domain" = [
+"project-1.privatgames.net" = [
     "project-2"
 ]
-"project-2.domain" = [
+"project-2.privatgames.net" = [
     "project-2"
 ]
-"project-3.domain" = [
+"project-3.privatgames.net" = [
     "project-3"
 ]
-"survival.domain" = [
+"survival.privatgames.net" = [
     "survival"
 ]
-"test-world.domain" = [
+"test-world.privatgames.net" = [
     "test-world"
 ]
 
@@ -499,13 +469,13 @@ show-plugins = false
 ### Set the modern forwarding token (replace TOKEN with your token, e.g. echo 'QPjJVyTpWr8srUFTkX12EEbREMZz1FrwxrNVP1x9ssxAAaM6jvTIGItJp5G4ogP9')
 
 ````bash
-cd ~/games/minecraft/velocity/ && echo 'TOKEN' > forwarding.secret
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/ && echo 'Tk5c1aSP5b2hnNPgLyvyUrrVs2HKyawQVsgU2SLQZFthxtApjJxtwhRYebDv4hDD' > forwarding.secret
 ````
 
 ### Install [ViaVersion](https://viaversion.com/) for Velocity
 
 ````bash
-mkdir ~/games/minecraft/velocity/plugins/ && cd ~/games/minecraft/velocity/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar
+mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/plugins/ && cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/velocity/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar
 ````
 
 ## Set up sub-servers
@@ -513,11 +483,11 @@ mkdir ~/games/minecraft/velocity/plugins/ && cd ~/games/minecraft/velocity/plugi
 ### If you accept the [Minecraft Eula](https://www.minecraft.net/en-us/eula), run the following command:
 
 ````bash
-cd ~/games/minecraft/lobby/ && echo 'eula=true' > eula.txt
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/ && echo 'eula=true' > eula.txt
 ````
 
 ````bash
-cd ~/games/minecraft/lobby/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && mkdir ~/games/minecraft/lobby/plugins/ && nano ~/games/minecraft/lobby/start.sh && chmod u+x ~/games/minecraft/lobby/start.sh
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/plugins/ && nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/start.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/start.sh
 ````
 
 ### Note: You can change the -Xmx7G to your preferred maximum RAM usage e.g. -Xmx15G for 15 Gb of maximum RAM usage
@@ -527,11 +497,11 @@ Insert:
 ````bash
 #!/bin/bash
 
-java -Xms1G -Xmx7G -jar paper-1.20.4-496.jar --nogui && exit
+java -Xms1G -Xmx85G -jar paper-1.20.4-496.jar --nogui && exit
 ````
 
 ````bash
-nano ~/games/minecraft/lobby/server.properties
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/server.properties
 ````
 
 ### Note: You can change all settings in the file to your liking, except for "query.port", "online-mode" & "server-port". If you want the same settings for the other sub-servers, I recommend saving the second part of the settings for later
@@ -552,7 +522,7 @@ enable-query=false
 generator-settings={}
 enforce-secure-profile=true
 level-name=world
-motd=motd
+motd=PrivatGames.net - Jetzt neu!
 pvp=true
 generate-structures=true
 max-chained-neighbor-updates=1000000
@@ -601,7 +571,7 @@ max-world-size=29999984
 ````
 
 ````bash
-nano ~/games/minecraft/lobby/spigot.yml
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/spigot.yml
 ````
 
 ### Note: You can change all settings in the file to your liking, except for "bungeecord"
@@ -792,7 +762,7 @@ stats:
 ## Secure server with modern forwarding
 
 ````bash
-mkdir ~/games/minecraft/lobby/config/ && nano ~/games/minecraft/lobby/config/paper-global.yml
+mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/config/ && nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/config/paper-global.yml
 ````
 
 ### Note: You can change all settings in the file to your liking except  for "proxies:", but replace the TOKEN with your token from before
@@ -899,7 +869,7 @@ proxies:
   velocity:
     enabled: true
     online-mode: true
-    secret: 'TOKEN'
+    secret: 'Tk5c1aSP5b2hnNPgLyvyUrrVs2HKyawQVsgU2SLQZFthxtApjJxtwhRYebDv4hDD'
 scoreboards:
   save-empty-scoreboard-teams: false
   track-plugin-scoreboards: false
@@ -936,35 +906,31 @@ watchdog:
 ### Install [ViaVersion](https://viaversion.com/) for Paper
 
 ````bash
-cd ~/games/minecraft/lobby/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar
 ````
 
 ### Copy config files to other sub-servers
 
 ````bash
-cd ~/games/minecraft/project-1/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp ~/games/minecraft/lobby/eula.txt ~/games/minecraft/project-1/eula.txt && cp ~/games/minecraft/lobby/start.sh ~/games/minecraft/project-1/start.sh && chmod u+x ~/games/minecraft/project-1/start.sh && mkdir ~/games/minecraft/project-1/plugins/ && cd ~/games/minecraft/project-1/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp ~/games/minecraft/lobby/spigot.yml ~/games/minecraft/project-1/spigot.yml && mkdir ~/games/minecraft/project-1/config/ && cp ~/games/minecraft/lobby/config/paper-global.yml ~/games/minecraft/project-1/config/paper-global.yml
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/eula.txt /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/eula.txt && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/start.sh /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/start.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/start.sh && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/plugins/ && cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/spigot.yml /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/spigot.yml && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/config/ && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/config/paper-global.yml /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/config/paper-global.yml
 ````
 
 ````bash
-cd ~/games/minecraft/project-2/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp ~/games/minecraft/lobby/eula.txt ~/games/minecraft/project-2/eula.txt && cp ~/games/minecraft/lobby/start.sh ~/games/minecraft/project-2/start.sh && chmod u+x ~/games/minecraft/project-2/start.sh && mkdir ~/games/minecraft/project-2/plugins/ && cd ~/games/minecraft/project-2/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp ~/games/minecraft/lobby/spigot.yml ~/games/minecraft/project-2/spigot.yml && mkdir ~/games/minecraft/project-2/config/ && cp ~/games/minecraft/lobby/config/paper-global.yml ~/games/minecraft/project-2/config/paper-global.yml
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/eula.txt /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/eula.txt && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/start.sh /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/start.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/start.sh && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/plugins/ && cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/spigot.yml /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/spigot.yml && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/config/ && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/config/paper-global.yml /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/config/paper-global.yml
 ````
 
 ````bash
-cd ~/games/minecraft/project-3/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp ~/games/minecraft/lobby/eula.txt ~/games/minecraft/project-3/eula.txt && cp ~/games/minecraft/lobby/start.sh ~/games/minecraft/project-3/start.sh && chmod u+x ~/games/minecraft/project-3/start.sh && mkdir ~/games/minecraft/project-3/plugins/ && cd ~/games/minecraft/project-3/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp ~/games/minecraft/lobby/spigot.yml ~/games/minecraft/project-3/spigot.yml && mkdir ~/games/minecraft/project-3/config/ && cp ~/games/minecraft/lobby/config/paper-global.yml ~/games/minecraft/project-3/config/paper-global.yml
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/eula.txt /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/eula.txt && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/start.sh /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/start.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/start.sh && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/plugins/ && cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/spigot.yml /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/spigot.yml && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/config/ && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/config/paper-global.yml /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/config/paper-global.yml
 ````
 
 ````bash
-cd ~/games/minecraft/survival/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp ~/games/minecraft/lobby/eula.txt ~/games/minecraft/survival/eula.txt && cp ~/games/minecraft/lobby/start.sh ~/games/minecraft/survival/start.sh && chmod u+x ~/games/minecraft/survival/start.sh && mkdir ~/games/minecraft/survival/plugins/ && cd ~/games/minecraft/survival/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp ~/games/minecraft/lobby/spigot.yml ~/games/minecraft/survival/spigot.yml && mkdir ~/games/minecraft/survival/config/ && cp ~/games/minecraft/lobby/config/paper-global.yml ~/games/minecraft/survival/config/paper-global.yml
-````
-
-````bash
-cd ~/games/minecraft/test-world/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp ~/games/minecraft/lobby/eula.txt ~/games/minecraft/test-world/eula.txt && cp ~/games/minecraft/lobby/start.sh ~/games/minecraft/test-world/start.sh && chmod u+x ~/games/minecraft/test-world/start.sh && mkdir ~/games/minecraft/test-world/plugins/ && cd ~/games/minecraft/test-world/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp ~/games/minecraft/lobby/spigot.yml ~/games/minecraft/test-world/spigot.yml && mkdir ~/games/minecraft/test-world/config/ && cp ~/games/minecraft/lobby/config/paper-global.yml ~/games/minecraft/test-world/config/paper-global.yml
+cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/ && wget https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/eula.txt /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/eula.txt && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/start.sh /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/start.sh && chmod u+x /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/start.sh && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/plugins/ && cd /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/plugins/ && wget https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/4.10.2/PAPER/ViaVersion-4.10.2.jar && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/spigot.yml /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/spigot.yml && mkdir /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/config/ && cp /mnt/Festplatte/Server/Minecraft/Server9-Velocity/lobby/config/paper-global.yml /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/config/paper-global.yml
 ````
 
 ### Set up server.properties for Project 1
 
 ````bash
-nano ~/games/minecraft/project-1/server.properties
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-1/server.properties
 ````
 
 ### Note: You can change all settings in the file to your liking, except for "query.port", "online-mode" & "server-port" (You can paste your saved configuration under the three settings)
@@ -976,12 +942,67 @@ query.port=30067
 online-mode=false
 server-port=30067
 
+enable-jmx-monitoring=false
+level-seed=
+rcon.port=25575
+enable-command-block=false
+gamemode=survival
+enable-query=false
+generator-settings={}
+enforce-secure-profile=true
+level-name=world
+motd=PrivatGames.net - Jetzt neu!
+pvp=true
+generate-structures=true
+max-chained-neighbor-updates=1000000
+difficulty=hard
+network-compression-threshold=256
+max-tick-time=60000
+require-resource-pack=false
+max-players=42
+use-native-transport=true
+enable-status=true
+allow-flight=false
+initial-disabled-packs=
+broadcast-rcon-to-ops=true
+view-distance=20
+resource-pack-prompt=
+server-ip=
+allow-nether=true
+enable-rcon=false
+sync-chunk-writes=true
+op-permission-level=4
+prevent-proxy-connections=false
+hide-online-players=false
+resource-pack=
+entity-broadcast-range-percentage=100
+simulation-distance=15
+player-idle-timeout=0
+rcon.password=
+debug=false
+force-gamemode=false
+rate-limit=0
+hardcore=false
+white-list=false
+broadcast-console-to-ops=true
+spawn-npcs=true
+spawn-animals=true
+log-ips=true
+function-permission-level=2
+initial-enabled-packs=vanilla
+level-type=minecraft\:normal
+text-filtering-config=
+spawn-monsters=true
+enforce-whitelist=false
+resource-pack-sha1=
+spawn-protection=0
+max-world-size=29999984
 ````
 
 ### Set up server.properties for Project 2
 
 ````bash
-nano ~/games/minecraft/project-2/server.properties
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-2/server.properties
 ````
 
 ### Note: You can change all settings in the file to your liking, except for "query.port", "online-mode" & "server-port" (You can paste your saved configuration under the three settings)
@@ -993,12 +1014,67 @@ query.port=30068
 online-mode=false
 server-port=30068
 
+enable-jmx-monitoring=false
+level-seed=
+rcon.port=25575
+enable-command-block=false
+gamemode=survival
+enable-query=false
+generator-settings={}
+enforce-secure-profile=true
+level-name=world
+motd=PrivatGames.net - Jetzt neu!
+pvp=true
+generate-structures=true
+max-chained-neighbor-updates=1000000
+difficulty=hard
+network-compression-threshold=256
+max-tick-time=60000
+require-resource-pack=false
+max-players=42
+use-native-transport=true
+enable-status=true
+allow-flight=false
+initial-disabled-packs=
+broadcast-rcon-to-ops=true
+view-distance=20
+resource-pack-prompt=
+server-ip=
+allow-nether=true
+enable-rcon=false
+sync-chunk-writes=true
+op-permission-level=4
+prevent-proxy-connections=false
+hide-online-players=false
+resource-pack=
+entity-broadcast-range-percentage=100
+simulation-distance=15
+player-idle-timeout=0
+rcon.password=
+debug=false
+force-gamemode=false
+rate-limit=0
+hardcore=false
+white-list=false
+broadcast-console-to-ops=true
+spawn-npcs=true
+spawn-animals=true
+log-ips=true
+function-permission-level=2
+initial-enabled-packs=vanilla
+level-type=minecraft\:normal
+text-filtering-config=
+spawn-monsters=true
+enforce-whitelist=false
+resource-pack-sha1=
+spawn-protection=0
+max-world-size=29999984
 ````
 
 ### Set up server.properties for Project 3
 
 ````bash
-nano ~/games/minecraft/project-3/server.properties
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/project-3/server.properties
 ````
 
 ### Note: You can change all settings in the file to your liking, except for "query.port", "online-mode" & "server-port" (You can paste your saved configuration under the three settings)
@@ -1010,12 +1086,67 @@ query.port=30069
 online-mode=false
 server-port=30069
 
+enable-jmx-monitoring=false
+level-seed=
+rcon.port=25575
+enable-command-block=false
+gamemode=survival
+enable-query=false
+generator-settings={}
+enforce-secure-profile=true
+level-name=world
+motd=PrivatGames.net - Jetzt neu!
+pvp=true
+generate-structures=true
+max-chained-neighbor-updates=1000000
+difficulty=hard
+network-compression-threshold=256
+max-tick-time=60000
+require-resource-pack=false
+max-players=42
+use-native-transport=true
+enable-status=true
+allow-flight=false
+initial-disabled-packs=
+broadcast-rcon-to-ops=true
+view-distance=20
+resource-pack-prompt=
+server-ip=
+allow-nether=true
+enable-rcon=false
+sync-chunk-writes=true
+op-permission-level=4
+prevent-proxy-connections=false
+hide-online-players=false
+resource-pack=
+entity-broadcast-range-percentage=100
+simulation-distance=15
+player-idle-timeout=0
+rcon.password=
+debug=false
+force-gamemode=false
+rate-limit=0
+hardcore=false
+white-list=false
+broadcast-console-to-ops=true
+spawn-npcs=true
+spawn-animals=true
+log-ips=true
+function-permission-level=2
+initial-enabled-packs=vanilla
+level-type=minecraft\:normal
+text-filtering-config=
+spawn-monsters=true
+enforce-whitelist=false
+resource-pack-sha1=
+spawn-protection=0
+max-world-size=29999984
 ````
 
-### Set up server.properties for Survival
+### Set up server.properties for Test World
 
 ````bash
-nano ~/games/minecraft/survival/server.properties
+nano /mnt/Festplatte/Server/Minecraft/Server9-Velocity/test-world/server.properties && cd ~
 ````
 
 ### Note: You can change all settings in the file to your liking, except for "query.port", "online-mode" & "server-port" (You can paste your saved configuration under the three settings)
@@ -1027,21 +1158,59 @@ query.port=30070
 online-mode=false
 server-port=30070
 
-````
-
-### Set up server.properties for Test World
-
-````bash
-nano ~/games/minecraft/test-world/server.properties && cd ~
-````
-
-### Note: You can change all settings in the file to your liking, except for "query.port", "online-mode" & "server-port" (You can paste your saved configuration under the three settings)
-
-Insert:
-
-````toml
-query.port=30071
-online-mode=false
-server-port=30071
-
+enable-jmx-monitoring=false
+level-seed=
+rcon.port=25575
+enable-command-block=false
+gamemode=survival
+enable-query=false
+generator-settings={}
+enforce-secure-profile=true
+level-name=world
+motd=PrivatGames.net - Jetzt neu!
+pvp=true
+generate-structures=true
+max-chained-neighbor-updates=1000000
+difficulty=hard
+network-compression-threshold=256
+max-tick-time=60000
+require-resource-pack=false
+max-players=42
+use-native-transport=true
+enable-status=true
+allow-flight=false
+initial-disabled-packs=
+broadcast-rcon-to-ops=true
+view-distance=20
+resource-pack-prompt=
+server-ip=
+allow-nether=true
+enable-rcon=false
+sync-chunk-writes=true
+op-permission-level=4
+prevent-proxy-connections=false
+hide-online-players=false
+resource-pack=
+entity-broadcast-range-percentage=100
+simulation-distance=15
+player-idle-timeout=0
+rcon.password=
+debug=false
+force-gamemode=false
+rate-limit=0
+hardcore=false
+white-list=false
+broadcast-console-to-ops=true
+spawn-npcs=true
+spawn-animals=true
+log-ips=true
+function-permission-level=2
+initial-enabled-packs=vanilla
+level-type=minecraft\:normal
+text-filtering-config=
+spawn-monsters=true
+enforce-whitelist=false
+resource-pack-sha1=
+spawn-protection=0
+max-world-size=29999984
 ````
