@@ -305,7 +305,7 @@ motd = "<#09add3>PrivatGames.net - Jetzt neu!"
 
 # What should we display for the maximum number of players? (Velocity does not support a cap
 # on the number of players online.)
-show-max-players = 420
+show-max-players = 100000
 
 # Should we authenticate players with Mojang? By default, this is on.
 online-mode = true
@@ -530,7 +530,7 @@ difficulty=hard
 network-compression-threshold=256
 max-tick-time=60000
 require-resource-pack=false
-max-players=42
+max-players=1000
 use-native-transport=true
 enable-status=true
 allow-flight=false
@@ -959,7 +959,7 @@ difficulty=hard
 network-compression-threshold=256
 max-tick-time=60000
 require-resource-pack=false
-max-players=42
+max-players=1000
 use-native-transport=true
 enable-status=true
 allow-flight=false
@@ -1031,7 +1031,7 @@ difficulty=hard
 network-compression-threshold=256
 max-tick-time=60000
 require-resource-pack=false
-max-players=42
+max-players=1000
 use-native-transport=true
 enable-status=true
 allow-flight=false
@@ -1103,7 +1103,7 @@ difficulty=hard
 network-compression-threshold=256
 max-tick-time=60000
 require-resource-pack=false
-max-players=42
+max-players=1000
 use-native-transport=true
 enable-status=true
 allow-flight=false
@@ -1175,7 +1175,7 @@ difficulty=hard
 network-compression-threshold=256
 max-tick-time=60000
 require-resource-pack=false
-max-players=42
+max-players=1000
 use-native-transport=true
 enable-status=true
 allow-flight=false
